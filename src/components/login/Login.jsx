@@ -4,7 +4,7 @@ import './Login.css';
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { userName: '', password: '', formClass: 'inputFormNormal' };
+    this.state = { userName: '', password: '', errorForm: ' ' };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -13,12 +13,14 @@ export default class Login extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let form = document.getElementById('loginForm');
-    alert(form);
-    this.setState({
-      formClass: 'inputFormError'
-    });
-    // form.submit();
+
+    if (this.state.userName === 'skuarch' && this.state.password === 'Dragon3s12.') {
+      alert('');
+    } else {
+      this.setState({
+        errorForm: 'wrong username or password!'
+      });
+    }
   }
 
   handleChange(e) {
@@ -37,36 +39,89 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} action="/dashboard" id="loginForm">
-        <label>
-          User:
-          <input
-            type="text"
-            name="userName"
-            placeholder="username"
-            className={this.state.formClass}
-            value={this.state.userName}
-            onChange={this.handleChange}
-          />
-          <br />
-          Password:
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            className={this.state.formClass}
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-          <br />
-          <input type="button" value="reset form" onClick={this.resetForm} />
-          <input type="submit" value="Submit" />
-        </label>
-        <br />
-        <label>User: {this.state.userName}</label>
-        <br />
-        <label>Paswrod: {this.state.password}</label>
-      </form>
+      <>
+        <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+          <div className="w-full max-w-md space-y-8">
+            <div>
+              <img
+                className="mx-auto h-12 w-auto"
+                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                alt="Radio Stations"
+              />
+              <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+                Sign in to your account
+              </h2>
+            </div>
+            <div className="text-sm content-center">
+              <div>{this.state.errorForm}</div>
+            </div>
+            <form
+              onSubmit={this.handleSubmit}
+              className="mt-8 space-y-6"
+              action="/dashboard"
+              method="POST"
+              name="loginForm"
+            >
+              <input type="hidden" name="remember" defaultValue="true" />
+              <div className="-space-y-px rounded-md shadow-sm">
+                <div>
+                  <label htmlFor="email-address" className="sr-only">
+                    Email address
+                  </label>
+                  <input
+                    id="email-address"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    required
+                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    placeholder="Email address"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="password" className="sr-only">
+                    Password
+                  </label>
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    autoComplete="current-password"
+                    required
+                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    placeholder="Password"
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <input
+                    id="remember-me"
+                    name="remember-me"
+                    type="checkbox"
+                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  />
+                  <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+                    Remember me
+                  </label>
+                </div>
+
+                <div className="text-sm">not availible</div>
+              </div>
+
+              <div>
+                <button
+                  type="submit"
+                  className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                  Sign in
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </>
     );
   }
 }
