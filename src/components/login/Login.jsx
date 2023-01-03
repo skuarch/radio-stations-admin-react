@@ -1,9 +1,13 @@
 import './Login.css';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+// import { useAuth } from '../hooks/useAuth';
 
 export const AppContext = React.createContext();
 
 const Login = () => {
+  const navigate = useNavigate();
+  // const { login } = useAuth();
   const [loginData, setLoginData] = useState({ userName: null, password: null, errorForm: '' });
   const { userName, password, errorForm } = loginData;
 
@@ -14,13 +18,15 @@ const Login = () => {
   const onSubmitForm = (event) => {
     event.preventDefault();
     setLoginData({ ...loginData, errorForm: '' });
+
     if (userName === 'skuarch' && password === '123') {
-      alert();
-      <AppContext.Provider value={userName}> </AppContext.Provider>;
+      // login();
+      navigate('dashboard');
     } else {
       setLoginData({ ...loginData, errorForm: 'invalid username or password' });
     }
   };
+
   return (
     <>
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
