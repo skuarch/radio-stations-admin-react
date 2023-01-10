@@ -22,7 +22,8 @@
     /*"react/react-in-jsx-scope": "off",*/
     "react/jsx-uses-react": "error",
     "prettier/prettier": "error",
-    "react/jsx-uses-vars": "error"
+    "react/jsx-uses-vars": "error",
+    "react/prop-types": "off"
   },
   "settings": {
     "react": {
