@@ -1,5 +1,5 @@
 import { DashboardMain } from '../dashboardMain/DashboardMain';
-import FullScreenLoader from '../Loader/FullScreenLoader';
+import FullScreenLoader from '../loader/FullScreenLoader';
 import { useState } from 'react';
 
 const Content = () => {
