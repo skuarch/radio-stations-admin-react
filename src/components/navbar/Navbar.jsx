@@ -37,14 +37,23 @@ export const Navbar = () => {
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
-                    <Link to="/dashboard" className="block px-4 py-2 text-sm text-gray-700">
+                    <Link
+                      to="/dashboard"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
                       Dashboard
                     </Link>
                     <Link
                       to="/create-radio-station"
-                      className="block px-4 py-2 text-sm text-gray-700"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                     >
-                      Create
+                      Create Radio
+                    </Link>
+                    <Link
+                      to="/create-radio-station"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Stadistics
                     </Link>
                   </div>
                 </div>
